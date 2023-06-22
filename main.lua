@@ -22,7 +22,7 @@ return function(File)
 	end
 	   
 	for _, Face in next, GetData(File, "f") do
-		a, b, c = tonumber(Face.x), tonumber(Face.y), tonumber(Face.z)
+		a, b, c = tonumber(Face.x:match("^%d+")), tonumber(Face.y:match("^%d+")), tonumber(Face.z:match("^%d+"))
 		table.insert(Triangles, {a, b, c})
 	end
 	
