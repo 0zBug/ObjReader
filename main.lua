@@ -35,13 +35,19 @@ return function(File)
 		["usemtl%s+%w+"] = function(usemtl) 
 			Material = string.gsub(usemtl, "usemtl%s+", "")
 		end,
-		["v%s+[\-\.%d]+%s+[\-\.%d]+%s+[\-\.%d]+"] = function(Vertex) 
+		["v%s+[\-\.%d]+%s+[\-\.%d]+%s+[\-\.%d]+"] = function(Vertex)
+			if #Objects == 0 then AddObject("unknown") end
+			
 			table.insert(Objects[#Objects].Verticies, {SplitData(Vertex)})
 		end,
 		["vt%s+[\-\./%d]+%s+[\-\./%d]+"] = function(Coordinates) 
+			if #Objects == 0 then AddObject("unknown") end
+			
 			table.insert(Objects[#Objects].Coordinates, {SplitData(Coordinates)})
 		end,
 		["f%s+[\-/%d]+%s+[\-/%d]+%s+[\-/%d]+"] = function(Face)
+			if #Objects == 0 then AddObject("unknown") end
+			
 			local a, b, c = SplitData(Face)
 			
 			local a, at = VertexData(a)
