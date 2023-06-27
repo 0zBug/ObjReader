@@ -69,25 +69,31 @@ return function(File)
 		local cy, sy = math.cos(ry), math.sin(ry)
 		
 		for _, Object in next, Objects do
-			for _, v in next, Object.Verticies do
-				local x, y, z = v[1], v[2], v[3]
-				v[1], v[2], v[3] = x * cx - z * sx, y * cy - x * sx * sy - z * cx * sy, x * sx * cy + y * sy + z * cx * cy
+			if type(Object) == "table" then
+				for _, v in next, Object.Verticies do
+					local x, y, z = v[1], v[2], v[3]
+					v[1], v[2], v[3] = x * cx - z * sx, y * cy - x * sx * sy - z * cx * sy, x * sx * cy + y * sy + z * cx * cy
+				end
 			end
 		end
 	end
 	
 	function Objects.Scale(x, y, z)
 		for _, Object in next, Objects do
-			for _, v in next, Object.Verticies do
-				v[1], v[2], v[3] = v[1] * x, v[2] * y, v[3] * z
+			if type(Object) == "table" then
+				for _, v in next, Object.Verticies do
+					v[1], v[2], v[3] = v[1] * x, v[2] * y, v[3] * z
+				end
 			end
 		end
 	end
 	
 	function Objects.Translate(x, y, z)
 		for _, Object in next, Objects do
-			for _, v in next, Object.Verticies do
-				v[1], v[2], v[3] = v[1] + x, v[2] + y, v[3] + z
+			if type(Object) == "table" then
+				for _, v in next, Object.Verticies do
+					v[1], v[2], v[3] = v[1] + x, v[2] + y, v[3] + z
+				end
 			end
 		end
 	end
