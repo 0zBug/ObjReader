@@ -1,4 +1,7 @@
 
+local PngReader = loadstring(game:HttpGet("https://raw.github.com/0zBug/PngReader/main/main.lua"))()
+local MtlReader = loadstring(game:HttpGet("https://raw.github.com/0zBug/MtlReader/main/main.lua"))()
+
 local function SplitData(Data)
 	return table.unpack(string.split(string.gsub(string.gsub(Data, "%a+%s+", ""), "%s+", " "), " "))
 end
