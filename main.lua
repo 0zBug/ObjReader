@@ -64,7 +64,7 @@ return function(File)
 		end
 	end
 	
-	local function Rotate(rx, ry)
+	function Objects.Rotate(rx, ry)
 		local cx, sx = math.cos(rx), math.sin(rx)
 		local cy, sy = math.cos(ry), math.sin(ry)
 		
@@ -76,7 +76,7 @@ return function(File)
 		end
 	end
 	
-	local function Scale(x, y, z)
+	function Objects.Scale(x, y, z)
 		for _, Object in next, Objects do
 			for _, v in next, Object.Verticies do
 				v[1], v[2], v[3] = v[1] * x, v[2] * y, v[3] * z
@@ -84,7 +84,7 @@ return function(File)
 		end
 	end
 	
-	local function Translate(x, y, z)
+	function Objects.Translate(x, y, z)
 		for _, Object in next, Objects do
 			for _, v in next, Object.Verticies do
 				v[1], v[2], v[3] = v[1] + x, v[2] + y, v[3] + z
@@ -92,10 +92,5 @@ return function(File)
 		end
 	end
 	
-	return {
-		Objects = Object,
-		Rotate = Rotate,
-		Scale = Scale,
-		Translate = Translate
-	}
+	return Objects
 end
