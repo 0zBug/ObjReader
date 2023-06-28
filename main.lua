@@ -32,7 +32,7 @@ return function(File)
 				Materials[Material] = PngReader.new(readfile(File))
 			end
 		end,
-		["usemtl%s+%w+"] = function(usemtl) 
+		["usemtl%s+([%w\_\.]+)"] = function(usemtl) 
 			Material = string.gsub(usemtl, "usemtl%s+", "")
 		end,
 		["v%s+[\-\.%d]+%s+[\-\.%d]+%s+[\-\.%d]+"] = function(Vertex)
